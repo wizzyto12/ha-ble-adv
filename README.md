@@ -3,6 +3,13 @@
 [![GitHub release](https://img.shields.io/github/v/release/NicoIIT/ha-ble-adv.svg)](https://github.com/NicoIIT/ha-ble-adv/releases/)
 ![Usage](https://img.shields.io/badge/dynamic/json?color=9932CC&logo=home-assistant&label=usage&suffix=%20installs&cacheSeconds=15600&url=https://analytics.home-assistant.io/custom_integrations.json&query=$.ble_adv.total)
 
+> **🔧 This is a Fork**: This fork adds support for **Split Cold/Warm Light Control** - allowing you to control two separate white lights independently using the cold and warm channels without color temperature adjustment.
+> 
+> - **Original Repository**: [NicoIIT/ha-ble-adv](https://github.com/NicoIIT/ha-ble-adv)
+> - **New Feature Branch**: [Split Light Control](https://github.com/wizzyto12/ha-ble-adv/tree/copilot/control-multiple-light-brightness)
+> - **Installation Guide**: See [INSTALLATION.md](INSTALLATION.md)
+> - **Feature Documentation**: See [SPLIT_LIGHTS.md](SPLIT_LIGHTS.md)
+
 Home Assistant Custom Integration to control Ceiling Fan / Lamp Devices from various Brands using **_BLE Raw Advertising_** as communication method.
 
 This integration **is not limited to any specific device type or brand**: it is able to recognize and reproduce the communication protocols used by various [Phone Apps](#supported-ceiling-fans--lamps-protocols) and Remotes.
@@ -14,6 +21,7 @@ This integration **is not limited to any specific device type or brand**: it is 
 * Synchronize another controller: allows to have a Phone App and a remote both updating Home Assistant entities state
 * Guided configuration fully based on Home Assistant User Interface configuration flow
 * Use either the bluetooth of the HomeAssistant host or an ESPHome based [ble_adv_proxy](https://github.com/NicoIIT/esphome-ble_adv_proxy) similar to the ESPHome `bluetooth_proxy` but supporting _BLE Raw Advertising_
+* **🆕 Split Cold/Warm Light Control**: Control two separate white lights independently using cold and warm channels (see [SPLIT_LIGHTS.md](SPLIT_LIGHTS.md))
 
 ## Requirements
 * Your Home Assistant must _either_:
