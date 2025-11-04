@@ -379,9 +379,13 @@ TRANS_V2_FL = [
 TRANS_V2_SPLIT = [
     *TRANS_COMMON_V1_V2,
     *TRANS_V2_COMMON,
-    # Cold channel (index 0) - brightness control only
+    # Cold channel - brightness control only (sets arg0, arg1=0)
+    Trans(ColdLightCmd().act(ATTR_ON, True), EncCmd(0xA5)),
+    Trans(ColdLightCmd().act(ATTR_ON, False), EncCmd(0xA6)),
     Trans(ColdLightCmd().act(ATTR_BR), EncCmd(0xA8)).copy(ATTR_BR, "arg0", 250).eq("arg1", 0),
-    # Warm channel (index 1) - brightness control only
+    # Warm channel - brightness control only (sets arg1, arg0=0)
+    Trans(WarmLightCmd().act(ATTR_ON, True), EncCmd(0xA5)),
+    Trans(WarmLightCmd().act(ATTR_ON, False), EncCmd(0xA6)),
     Trans(WarmLightCmd().act(ATTR_BR), EncCmd(0xA8)).eq("arg0", 0).copy(ATTR_BR, "arg1", 250),
 ]
 
