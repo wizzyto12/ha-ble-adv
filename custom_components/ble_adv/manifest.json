@@ -1,21 +1,22 @@
 {
   "domain": "ble_adv",
-  "name": "BLE ADV Ceiling Fan / Lamps",
+  "name": "BLE ADV Ceiling Fan / Lamps (Split Light Fork)",
   "after_dependencies": [
     "esphome"
   ],
   "codeowners": [
-    "@NicoIIT"
+    "@NicoIIT",
+    "@wizzyto12"
   ],
   "config_flow": true,
-  "documentation": "https://github.com/NicoIIT/ha-ble-adv",
+  "documentation": "https://github.com/wizzyto12/ha-ble-adv",
   "integration_type": "device",
   "iot_class": "assumed_state",
-  "issue_tracker": "https://github.com/NicoIIT/ha-ble-adv/issues",
+  "issue_tracker": "https://github.com/wizzyto12/ha-ble-adv/issues",
   "requirements": [
     "bluetooth_adapters",
     "pycryptodome",
     "btsocket"
   ],
-  "version": "0.0.0"
+  "version": "0.1.0"
 }
