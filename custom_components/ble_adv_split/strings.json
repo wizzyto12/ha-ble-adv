@@ -422,7 +422,7 @@
           "description": "The targetted device queue name, not corresponding to any ID: it is used to discriminate advertisements between different devices and apply proper Queue Handling."
         },
         "duration": {
-          "name": "Minumum Duration",
+          "name": "Minimum Duration",
           "description": "The minimum duration before which another advertisement can be sent with the same Adapter/Device, in ms."
         }
       }
