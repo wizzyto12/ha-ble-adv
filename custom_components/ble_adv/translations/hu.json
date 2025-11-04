@@ -288,6 +288,8 @@
     "light": {
       "options": {
         "cww": "Hideg / meleg fehér",
+        "cold": "Csak hideg fehér",
+        "warm": "Csak meleg fehér",
         "onoff": "Csak be / ki",
         "rgb": "RGB",
         "none": "Nincs"

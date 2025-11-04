@@ -288,6 +288,8 @@
     "light": {
       "options": {
         "cww": "Studená / Teplá bílá",
+        "cold": "Pouze studená bílá",
+        "warm": "Pouze teplá bílá",
         "onoff": "Jen zapnout / vypnout",
         "rgb": "RGB",
         "none": "Žádné"

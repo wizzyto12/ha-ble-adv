@@ -288,6 +288,8 @@
     "light": {
       "options": {
         "cww": "Cold / Warm White",
+        "cold": "Cold White Only",
+        "warm": "Warm White Only",
         "onoff": "On / Off only",
         "rgb": "RGB",
         "none": "None"
