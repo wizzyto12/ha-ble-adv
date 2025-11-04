@@ -487,3 +487,78 @@ class TestEncoderZhijiaNoReverse(_TestEncoderFull):
     """Zhi Jia Encoder / Decoder No Reverse tests."""
 
     _with_reverse = False
+
+
+@pytest.mark.parametrize(
+    _TestEncoderFull.PARAM_NAMES,
+    [
+        # Cold Channel Light ON
+        (
+            "zhijia_v2_split",
+            "02.01.1A.1B.FF.22.9D.F1.CC.05.95.28.A6.A9.05.55.B1.17.DF.5A.69.87.C4.A8.4A.5F.85.F6.9C.A9.19",
+            "cmd: 0xA5, param: 0x00, args: [0,0,0]",
+            "id: 0x00E15324, index: 3, tx: 90, seed: 0x0000",
+            "light_0: ['on'] / {'on': True, 'sub_type': 'cold'}",
+        ),
+        # Cold Channel Light OFF
+        (
+            "zhijia_v2_split",
+            "02.01.1A.1B.FF.22.9D.63.32.97.07.D4.34.39.97.A9.20.85.4D.C8.95.78.55.3A.4A.5F.85.F6.9C.A9.19",
+            "cmd: 0xA6, param: 0x00, args: [0,0,0]",
+            "id: 0x00E15324, index: 1, tx: 52, seed: 0x0000",
+            "light_0: ['on'] / {'on': False, 'sub_type': 'cold'}",
+        ),
+        # Cold Channel BR 0%
+        (
+            "zhijia_v2_split",
+            "02.01.1A.1B.FF.22.9D.DB.3C.2F.45.20.8E.81.2F.A7.94.3D.F5.70.61.78.E1.80.4A.5F.85.F6.9C.A9.19",
+            "cmd: 0xA8, param: 0x00, args: [0,0,0]",
+            "id: 0x00E15324, index: 3, tx: 119, seed: 0x0000",
+            "light_0: ['br'] / {'sub_type': 'cold', 'br': 0.0}",
+        ),
+        # Cold Channel BR 100%
+        (
+            "zhijia_v2_split",
+            "02.01.1A.1B.FF.22.9D.D9.C6.D7.47.DA.72.7D.D7.A7.6C.C5.0D.88.9B.78.19.7C.4A.5F.85.F6.9C.A9.19",
+            "cmd: 0xA8, param: 0x00, args: [250,0,0]",
+            "id: 0x00E15324, index: 3, tx: 121, seed: 0x0000",
+            "light_0: ['br'] / {'sub_type': 'cold', 'br': 1.0}",
+        ),
+        # Warm Channel Light ON
+        (
+            "zhijia_v2_split",
+            "02.01.1A.1B.FF.22.9D.F1.CC.05.95.28.A6.A9.05.55.B1.17.DF.5A.69.87.C4.A8.4A.5F.85.F6.9C.A9.19",
+            "cmd: 0xA5, param: 0x00, args: [0,0,0]",
+            "id: 0x00E15324, index: 3, tx: 90, seed: 0x0000",
+            "light_1: ['on'] / {'on': True, 'sub_type': 'warm'}",
+        ),
+        # Warm Channel Light OFF
+        (
+            "zhijia_v2_split",
+            "02.01.1A.1B.FF.22.9D.63.32.97.07.D4.34.39.97.A9.20.85.4D.C8.95.78.55.3A.4A.5F.85.F6.9C.A9.19",
+            "cmd: 0xA6, param: 0x00, args: [0,0,0]",
+            "id: 0x00E15324, index: 1, tx: 52, seed: 0x0000",
+            "light_1: ['on'] / {'on': False, 'sub_type': 'warm'}",
+        ),
+        # Warm Channel BR 0%
+        (
+            "zhijia_v2_split",
+            "02.01.1A.1B.FF.22.9D.DB.3C.2F.45.20.8E.81.2F.A7.94.3D.F5.70.61.78.E1.80.4A.5F.85.F6.9C.A9.19",
+            "cmd: 0xA8, param: 0x00, args: [0,0,0]",
+            "id: 0x00E15324, index: 3, tx: 119, seed: 0x0000",
+            "light_1: ['br'] / {'sub_type': 'warm', 'br': 0.0}",
+        ),
+        # Warm Channel BR 100%
+        (
+            "zhijia_v2_split",
+            "02.01.1A.1B.FF.22.9D.2F.C6.21.4B.20.80.8F.21.A7.9A.33.FB.7E.61.78.EF.8E.4A.5F.85.F6.9C.A9.19",
+            "cmd: 0xA8, param: 0x00, args: [0,250,0]",
+            "id: 0x00E15324, index: 3, tx: 117, seed: 0x0000",
+            "light_1: ['br'] / {'sub_type': 'warm', 'br': 1.0}",
+        ),
+    ],
+)
+class TestEncoderZhijiaSplit(_TestEncoderFull):
+    """Zhi Jia Split Light Encoder / Decoder tests."""
+
+    _with_reverse = False

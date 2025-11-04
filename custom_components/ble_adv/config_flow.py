@@ -37,8 +37,10 @@ from .codecs.const import (
     DEVICE_TYPE,
     FAN_TYPE,
     LIGHT_TYPE,
+    LIGHT_TYPE_COLD,
     LIGHT_TYPE_CWW,
     LIGHT_TYPE_RGB,
+    LIGHT_TYPE_WARM,
 )
 from .codecs.models import BleAdvCodec, BleAdvConfig, BleAdvEntAttr
 from .const import (
@@ -687,7 +689,7 @@ class BleAdvConfigFlow(ConfigFlow, domain=DOMAIN):
                 schema_opts: dict[vol.Schemable, Any] = {
                     vol.Required(CONF_TYPE, default=opts.get(CONF_TYPE, CONF_TYPE_NONE)): self._get_selector(LIGHT_TYPE, types),
                 }
-                if LIGHT_TYPE_CWW in types or LIGHT_TYPE_RGB in types:
+                if LIGHT_TYPE_CWW in types or LIGHT_TYPE_RGB in types or LIGHT_TYPE_COLD in types or LIGHT_TYPE_WARM in types:
                     schema_opts[vol.Required(CONF_MIN_BRIGHTNESS, default=opts.get(CONF_MIN_BRIGHTNESS, 3))] = selector.NumberSelector(
                         selector.NumberSelectorConfig(step=1, min=1, max=15, mode=selector.NumberSelectorMode.BOX)
                     )

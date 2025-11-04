@@ -14,9 +14,11 @@ from .const import (
     DEVICE_TYPE,
     FAN_TYPE,
     LIGHT_TYPE,
+    LIGHT_TYPE_COLD,
     LIGHT_TYPE_CWW,
     LIGHT_TYPE_ONOFF,
     LIGHT_TYPE_RGB,
+    LIGHT_TYPE_WARM,
 )
 
 _LOGGER = logging.getLogger(__name__)
@@ -284,6 +286,22 @@ class CTLightCmd(EntityMatcher):
     def __init__(self, index: int = 0) -> None:
         super().__init__(LIGHT_TYPE, index)
         self.eqs[ATTR_SUB_TYPE] = LIGHT_TYPE_CWW
+
+
+class ColdLightCmd(EntityMatcher):
+    """Specific Cold Channel Light Matcher - controls only cold white channel."""
+
+    def __init__(self, index: int = 0) -> None:
+        super().__init__(LIGHT_TYPE, index)
+        self.eqs[ATTR_SUB_TYPE] = LIGHT_TYPE_COLD
+
+
+class WarmLightCmd(EntityMatcher):
+    """Specific Warm Channel Light Matcher - controls only warm white channel."""
+
+    def __init__(self, index: int = 0) -> None:
+        super().__init__(LIGHT_TYPE, index)
+        self.eqs[ATTR_SUB_TYPE] = LIGHT_TYPE_WARM
 
 
 class DeviceCmd(EntityMatcher):

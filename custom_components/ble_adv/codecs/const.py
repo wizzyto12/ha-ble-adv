@@ -8,6 +8,8 @@ LIGHT_TYPE = "light"
 LIGHT_TYPE_ONOFF = "onoff"
 LIGHT_TYPE_RGB = "rgb"
 LIGHT_TYPE_CWW = "cww"
+LIGHT_TYPE_COLD = "cold"
+LIGHT_TYPE_WARM = "warm"
 
 ATTR_ON = "on"
 ATTR_CMD = "cmd"

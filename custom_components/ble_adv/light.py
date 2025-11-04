@@ -31,9 +31,11 @@ from .codecs.const import (
     ATTR_STEP,
     ATTR_WARM,
     LIGHT_TYPE,
+    LIGHT_TYPE_COLD,
     LIGHT_TYPE_CWW,
     LIGHT_TYPE_ONOFF,
     LIGHT_TYPE_RGB,
+    LIGHT_TYPE_WARM,
 )
 from .const import CONF_EFFECTS, CONF_FORCED_CMDS, CONF_LIGHTS, CONF_MIN_BRIGHTNESS, CONF_REFRESH_ON_START, CONF_REVERSED, DOMAIN
 from .device import ATTR_IS_ON, BleAdvDevice, BleAdvEntAttr, BleAdvEntity, BleAdvStateAttribute
@@ -54,6 +56,8 @@ def create_entity(options: dict[str, Any], device: BleAdvDevice, index: int) -> 
         light = BleAdvLightCWW(light_type, device, index, min_br)
         light.setup_effects(options.get(CONF_EFFECTS, []))
         light.reverse_cw = bool(options.get(CONF_REVERSED, False))
+    elif light_type in (LIGHT_TYPE_COLD, LIGHT_TYPE_WARM):
+        light = BleAdvLightChannel(light_type, device, index, min_br)
     elif light_type == LIGHT_TYPE_ONOFF:
         light = BleAdvLightBinary(light_type, device, index)
     else:
@@ -282,3 +286,25 @@ class BleAdvLightCWW(BleAdvLightWithBrightness):
                 self._apply_add_to_ct(ent_attr.get_attr_as_float(ATTR_STEP))
             elif ent_attr.attrs.get(ATTR_CMD) == ATTR_CMD_CT_DOWN:
                 self._apply_add_to_ct(-ent_attr.get_attr_as_float(ATTR_STEP))
+
+
+class BleAdvLightChannel(BleAdvLightWithBrightness):
+    """Single Channel Light - controls cold or warm channel independently with brightness only."""
+
+    _attr_supported_color_modes = {ColorMode.BRIGHTNESS}
+    _attr_color_mode = ColorMode.BRIGHTNESS
+    _state_attributes = frozenset(
+        [
+            BleAdvStateAttribute(ATTR_IS_ON, False, [ATTR_ON]),
+            BleAdvStateAttribute(ATTR_BRIGHTNESS, 255, [ATTR_BR]),
+        ]
+    )
+
+    def get_attrs(self) -> dict[str, Any]:
+        """Get the attrs."""
+        return {**super().get_attrs(), ATTR_BR: self._get_br()}
+
+    def forced_changed_attr_on_start(self) -> list[str]:
+        """List Forced changed attributes on start."""
+        forced_attrs = super().forced_changed_attr_on_start()
+        return [*forced_attrs, ATTR_BR] if self.refresh_on_start else forced_attrs
