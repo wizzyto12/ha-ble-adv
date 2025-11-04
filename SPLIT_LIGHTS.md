@@ -12,10 +12,14 @@ If you have a Zhi Jia controller (with brightness + color temperature features) 
 
 To use this feature with your Zhi Jia v2 controller:
 
-1. Set the codec to `zhijia_v2_split` during device configuration
-2. Configure two light entities:
-   - **Light 0**: Set type to `cold` - This controls the first white light (cold channel)
-   - **Light 1**: Set type to `warm` - This controls the second white light (warm channel)
+1. During device setup, when asked to select a codec, choose `zhijia_v2_split`
+2. In the configuration flow, when configuring light entities, you'll see new options:
+   - **Cold White Only** - Controls only the cold channel
+   - **Warm White Only** - Controls only the warm channel
+3. Configure two light entities:
+   - **Light 0**: Select type `Cold White Only` - This controls the first white light (cold channel)
+   - **Light 1**: Select type `Warm White Only` - This controls the second white light (warm channel)
+4. Set the minimum brightness for each light (as low as your app allows, typically 3%)
 
 ## Features
 
@@ -26,19 +30,30 @@ Each light entity supports:
 
 ## Example Configuration
 
-When setting up your integration:
+When setting up your integration through the Home Assistant UI:
+
+**Step 1: Select Codec**
 ```
 Codec: zhijia_v2_split
-
-Light Entities:
-- Entity 0:
-  - Type: cold
-  - Min Brightness: 3% (or as low as your app allows)
-  
-- Entity 1:
-  - Type: warm
-  - Min Brightness: 3% (or as low as your app allows)
 ```
+
+**Step 2: Configure Light Entities**
+
+Light 0 Configuration:
+```
+Type: Cold White Only
+Min Brightness: 3% (or as low as your app allows)
+Refresh on Start: Optional (check to refresh state on HA restart)
+```
+
+Light 1 Configuration:
+```
+Type: Warm White Only
+Min Brightness: 3% (or as low as your app allows)
+Refresh on Start: Optional (check to refresh state on HA restart)
+```
+
+The configuration flow will show these as dropdown options in your selected language.
 
 ## Technical Details
 
