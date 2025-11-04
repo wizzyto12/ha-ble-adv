@@ -9,9 +9,9 @@ homeassistant:
 logger:
   default: info
   logs:
-    custom_components.ble_adv: debug
+    custom_components.ble_adv_split: debug
 
-ble_adv:
+ble_adv_split:
   ignored_duration: 60000
   # ignored_macs:
   #   - 64:F0:AD:38:DC:E2

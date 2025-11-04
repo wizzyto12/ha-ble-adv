@@ -1,8 +1,8 @@
 # ruff: noqa: S101
 """Codec Tests."""
 
-from ble_adv.codecs import get_codecs
-from ble_adv.codecs.models import BleAdvAdvertisement, BleAdvCodec
+from ble_adv_split.codecs import get_codecs
+from ble_adv_split.codecs.models import BleAdvAdvertisement, BleAdvCodec
 
 CODECS: dict[str, BleAdvCodec] = get_codecs()
 # Disable tx_count bump by codecs

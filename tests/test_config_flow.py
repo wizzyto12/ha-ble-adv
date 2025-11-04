@@ -6,8 +6,8 @@ from unittest import mock
 
 import pytest
 from aiohttp import web
-from ble_adv.codecs.models import BleAdvConfig
-from ble_adv.config_flow import (
+from ble_adv_split.codecs.models import BleAdvConfig
+from ble_adv_split.config_flow import (
     BleAdvBlinkProgressFlow,
     BleAdvConfigFlow,
     BleAdvConfigHandler,
@@ -17,7 +17,7 @@ from ble_adv.config_flow import (
     BleAdvWaitRawAdvProgress,
     _CodecConfig,
 )
-from ble_adv.coordinator import BleAdvCoordinator
+from ble_adv_split.coordinator import BleAdvCoordinator
 from homeassistant.core import HomeAssistant
 
 
@@ -38,7 +38,7 @@ async def test_api_view() -> None:
         return resp
 
     av = BleAdvConfigView("flow", _get_resp)
-    assert av.full_url == "/api/ble_adv/config_flow/flow"
+    assert av.full_url == "/api/ble_adv_split/config_flow/flow"
     assert await av.get(None, "wrong_flow") == av.NOT_FOUND_RESP  # type: ignore[none]
     assert await av.get(None, "flow") == resp  # type: ignore[none]
     assert await av.get(None, "flow") == av.NOT_FOUND_RESP  # type: ignore[none]

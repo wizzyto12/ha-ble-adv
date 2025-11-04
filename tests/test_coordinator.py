@@ -4,10 +4,10 @@
 import asyncio
 from unittest import mock
 
-from ble_adv.adapters import BleAdvQueueItem
-from ble_adv.codecs.models import BleAdvAdvertisement, BleAdvCodec, BleAdvConfig, BleAdvEncCmd
-from ble_adv.const import CONF_ADAPTER_ID, CONF_DEVICE_QUEUE, CONF_DURATION, CONF_INTERVAL, CONF_RAW, CONF_REPEAT
-from ble_adv.coordinator import BleAdvBaseDevice, BleAdvCoordinator
+from ble_adv_split.adapters import BleAdvQueueItem
+from ble_adv_split.codecs.models import BleAdvAdvertisement, BleAdvCodec, BleAdvConfig, BleAdvEncCmd
+from ble_adv_split.const import CONF_ADAPTER_ID, CONF_DEVICE_QUEUE, CONF_DURATION, CONF_INTERVAL, CONF_RAW, CONF_REPEAT
+from ble_adv_split.coordinator import BleAdvBaseDevice, BleAdvCoordinator
 from homeassistant.core import HomeAssistant
 
 from tests.conftest import MockEspProxy

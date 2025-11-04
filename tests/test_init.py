@@ -1,10 +1,10 @@
-"""ble_adv component init tests."""
+"""ble_adv_split component init tests."""
 
 # ruff: noqa: S101
 from unittest import mock
 
-from ble_adv import async_migrate_entry, async_setup, async_setup_entry, async_unload_entry, get_coordinator
-from ble_adv.const import (
+from ble_adv_split import async_migrate_entry, async_setup, async_setup_entry, async_unload_entry, get_coordinator
+from ble_adv_split.const import (
     CONF_ADAPTER_ID,
     CONF_ADAPTER_IDS,
     CONF_CODEC_ID,

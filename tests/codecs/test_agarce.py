@@ -2,8 +2,8 @@
 
 # ruff: noqa: S101
 import pytest
-from ble_adv.codecs.agarce import TRANS, AgarceEncoder
-from ble_adv.codecs.const import (
+from ble_adv_split.codecs.agarce import TRANS, AgarceEncoder
+from ble_adv_split.codecs.const import (
     ATTR_ON,
     ATTR_PRESET,
     ATTR_PRESET_BREEZE,

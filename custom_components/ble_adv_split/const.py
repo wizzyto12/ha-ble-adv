@@ -2,7 +2,7 @@
 
 from homeassistant.const import Platform
 
-DOMAIN = "ble_adv"
+DOMAIN = "ble_adv_split"
 PLATFORMS = [Platform.LIGHT, Platform.FAN]
 
 CONF_COORDINATOR_ID = "coordinator_unique_id"

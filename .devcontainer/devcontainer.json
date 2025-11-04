@@ -1,5 +1,5 @@
 {
-    "name": "NicoIIT/ble_adv",
+    "name": "NicoIIT/ble_adv_split",
     "build": {
         "dockerfile": "Dockerfile"
     },

@@ -1,7 +1,7 @@
 # <img width="64" height="64" alt="icon@2x" src="https://github.com/user-attachments/assets/29025370-fa25-41a1-ad18-5ca567dbf120" />  Home Assistant BLE ADV Ceiling Fan / Lamps
 
 [![GitHub release](https://img.shields.io/github/v/release/NicoIIT/ha-ble-adv.svg)](https://github.com/NicoIIT/ha-ble-adv/releases/)
-![Usage](https://img.shields.io/badge/dynamic/json?color=9932CC&logo=home-assistant&label=usage&suffix=%20installs&cacheSeconds=15600&url=https://analytics.home-assistant.io/custom_integrations.json&query=$.ble_adv.total)
+![Usage](https://img.shields.io/badge/dynamic/json?color=9932CC&logo=home-assistant&label=usage&suffix=%20installs&cacheSeconds=15600&url=https://analytics.home-assistant.io/custom_integrations.json&query=$.ble_adv_split.total)
 
 > **🔧 This is a Fork**: This fork adds support for **Split Cold/Warm Light Control** - allowing you to control two separate white lights independently using the cold and warm channels without color temperature adjustment.
 > 
@@ -63,7 +63,7 @@ Alternatively if you do not want to use HACS, you can simply clone this reposito
 ```
 /ha_root:
   |-> custom_components
-  |    |-> ble_adv
+  |    |-> ble_adv_split
   |-> configuration.yaml
 ```
 Still with this method you will not be warned when a new Release will be available.

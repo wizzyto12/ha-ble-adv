@@ -1,5 +1,5 @@
 {
-  "domain": "ble_adv",
+  "domain": "ble_adv_split",
   "name": "BLE ADV Ceiling Fan / Lamps (Split Light Fork)",
   "after_dependencies": [
     "esphome"

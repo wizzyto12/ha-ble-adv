@@ -5,10 +5,10 @@ from unittest import mock
 
 import pytest
 import voluptuous as vol
-from ble_adv.codecs.models import BleAdvEntAttr
-from ble_adv.const import CONF_LAST_VERSION, DOMAIN
-from ble_adv.device import BleAdvEntity
-from ble_adv.esp_adapters import (
+from ble_adv_split.codecs.models import BleAdvEntAttr
+from ble_adv_split.const import CONF_LAST_VERSION, DOMAIN
+from ble_adv_split.device import BleAdvEntity
+from ble_adv_split.esp_adapters import (
     CONF_ATTR_DEVICE_ID,
     CONF_ATTR_IGN_DURATION,
     CONF_ATTR_RAW,

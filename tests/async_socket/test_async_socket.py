@@ -6,7 +6,7 @@ import os
 from unittest import mock
 
 import pytest
-from ble_adv.async_socket import TUNNEL_SOCKET_FILE_VAR, AsyncSocket, AsyncTunnelSocket, create_async_socket
+from ble_adv_split.async_socket import TUNNEL_SOCKET_FILE_VAR, AsyncSocket, AsyncTunnelSocket, create_async_socket
 
 from .conftest import _ConMock, _SocketMock
 

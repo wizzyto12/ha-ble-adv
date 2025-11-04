@@ -1,5 +1,5 @@
 {
-    "name": "BLE ADV Ceiling Fan / Lamps",
+    "name": "Custom - BLE ADV Ceiling Fan / Lamps",
     "zip_release": true,
     "hide_default_branch": true,
     "homeassistant": "2025.2.4",

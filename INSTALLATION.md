@@ -49,7 +49,7 @@ git clone https://github.com/wizzyto12/ha-ble-adv.git
 mkdir -p /config/custom_components
 
 # Copy the integration
-cp -r ha-ble-adv/custom_components/ble_adv /config/custom_components/
+cp -r ha-ble-adv/custom_components/ble_adv_split /config/custom_components/
 ```
 
 ### Step 3: Restart Home Assistant
@@ -72,14 +72,14 @@ To test this specific PR before merging:
 ```bash
 cd /config
 git clone -b copilot/control-multiple-light-brightness https://github.com/wizzyto12/ha-ble-adv.git ha-ble-adv-split
-cp -r ha-ble-adv-split/custom_components/ble_adv /config/custom_components/
+cp -r ha-ble-adv-split/custom_components/ble_adv_split /config/custom_components/
 ```
 
 ## Should You Rename It?
 
 ### For Personal Use (Keep Same Name)
 If you're only using this for yourself and might merge back to the original:
-- **Keep the domain as `ble_adv`**
+- **Keep the domain as `ble_adv_split`**
 - **Pros**: Easy to switch back to original, no conflicts with existing setup
 - **Cons**: Can only have one version installed at a time
 
@@ -107,7 +107,7 @@ If you decide to rename it to make it distinct:
 
 ### 2. Rename Directory
 ```bash
-mv custom_components/ble_adv custom_components/ble_adv_split
+mv custom_components/ble_adv_split custom_components/ble_adv_split
 ```
 
 ### 3. Update const.py
@@ -116,14 +116,14 @@ DOMAIN = "ble_adv_split"
 ```
 
 ### 4. Update All References
-Search and replace `ble_adv` with `ble_adv_split` in:
+Search and replace `ble_adv_split` with `ble_adv_split` in:
 - `__init__.py`
 - `config_flow.py`
 - Any other files that reference the domain
 
 ## Recommendation
 
-**For now, I recommend keeping the same name (`ble_adv`)** because:
+**For now, I recommend keeping the same name (`ble_adv_split`)** because:
 
 1. **Easier testing**: You can test your changes without conflicts
 2. **Easier to contribute back**: If the original author wants to merge your changes
@@ -159,7 +159,7 @@ After installation:
 
 ### "Integration not found"
 - Make sure you restarted Home Assistant after copying files
-- Check that files are in `/config/custom_components/ble_adv/`
+- Check that files are in `/config/custom_components/ble_adv_split/`
 
 ### "Can't find the new light types"
 - Make sure you're using the `zhijia_v2_split` codec
@@ -168,7 +168,7 @@ After installation:
 ### Want to switch between versions?
 If testing between original and fork:
 1. Remove the integration (Settings → Integrations → BLE ADV → Delete)
-2. Delete `/config/custom_components/ble_adv/`
+2. Delete `/config/custom_components/ble_adv_split/`
 3. Install the version you want
 4. Restart Home Assistant
 5. Add the integration again
