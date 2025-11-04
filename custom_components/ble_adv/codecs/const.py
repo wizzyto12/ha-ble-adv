@@ -8,6 +8,7 @@ LIGHT_TYPE = "light"
 LIGHT_TYPE_ONOFF = "onoff"
 LIGHT_TYPE_RGB = "rgb"
 LIGHT_TYPE_CWW = "cww"
+LIGHT_TYPE_CWW_SPLIT = "cww_split"
 
 ATTR_ON = "on"
 ATTR_CMD = "cmd"

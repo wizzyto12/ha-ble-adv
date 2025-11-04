@@ -15,6 +15,7 @@ from .const import (
     FAN_TYPE,
     LIGHT_TYPE,
     LIGHT_TYPE_CWW,
+    LIGHT_TYPE_CWW_SPLIT,
     LIGHT_TYPE_ONOFF,
     LIGHT_TYPE_RGB,
 )
@@ -284,6 +285,34 @@ class CTLightCmd(EntityMatcher):
     def __init__(self, index: int = 0) -> None:
         super().__init__(LIGHT_TYPE, index)
         self.eqs[ATTR_SUB_TYPE] = LIGHT_TYPE_CWW
+
+
+class ColdLightCmd(EntityMatcher):
+    """Specific Cold Channel Light Matcher for split CWW control."""
+
+    def __init__(self, index: int = 0) -> None:
+        super().__init__(LIGHT_TYPE, index)
+        self.eqs[ATTR_SUB_TYPE] = LIGHT_TYPE_CWW_SPLIT
+
+    def get_supported_features(self) -> tuple[str, int, dict[str, Any]]:
+        """Get Features."""
+        base_type, index, feats = super().get_supported_features()
+        # Cold channel is represented as index 0 for split lights
+        return (base_type, index * 2, {**feats})
+
+
+class WarmLightCmd(EntityMatcher):
+    """Specific Warm Channel Light Matcher for split CWW control."""
+
+    def __init__(self, index: int = 0) -> None:
+        super().__init__(LIGHT_TYPE, index)
+        self.eqs[ATTR_SUB_TYPE] = LIGHT_TYPE_CWW_SPLIT
+
+    def get_supported_features(self) -> tuple[str, int, dict[str, Any]]:
+        """Get Features."""
+        base_type, index, feats = super().get_supported_features()
+        # Warm channel is represented as index 1 for split lights
+        return (base_type, index * 2 + 1, {**feats})
 
 
 class DeviceCmd(EntityMatcher):

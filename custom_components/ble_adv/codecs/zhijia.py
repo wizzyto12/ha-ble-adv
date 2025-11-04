@@ -26,6 +26,7 @@ from .models import (
     BleAdvCodec,
     BleAdvConfig,
     BleAdvEncCmd,
+    ColdLightCmd,
     CTLightCmd,
     DeviceCmd,
     Fan3SpeedCmd,
@@ -34,6 +35,7 @@ from .models import (
     LightCmd,
     RGBLightCmd,
     Trans,
+    WarmLightCmd,
 )
 from .models import EncoderMatcher as EncCmd
 from .utils import crc16_le, whiten
@@ -374,6 +376,15 @@ TRANS_V2_FL = [
     Trans(CTLightCmd().act(ATTR_CT), EncCmd(0xAE)).copy(ATTR_CT, "arg0", 250).no_direct(),
 ]
 
+TRANS_V2_SPLIT = [
+    *TRANS_COMMON_V1_V2,
+    *TRANS_V2_COMMON,
+    # Cold channel (index 0) - brightness control only
+    Trans(ColdLightCmd().act(ATTR_BR), EncCmd(0xA8)).copy(ATTR_BR, "arg0", 250).eq("arg1", 0),
+    # Warm channel (index 1) - brightness control only
+    Trans(WarmLightCmd().act(ATTR_BR), EncCmd(0xA8)).eq("arg0", 0).copy(ATTR_BR, "arg1", 250),
+]
+
 TRANS_VR1 = [
     Trans(DeviceCmd().act(ATTR_CMD, ATTR_CMD_PAIR), EncCmd(0xA2)),
     Trans(DeviceCmd().act(ATTR_CMD, ATTR_CMD_UNPAIR), EncCmd(0xA3)),
@@ -389,6 +400,7 @@ CODECS = [
     ZhijiaEncoderV1([0x19, 0x01, 0x10]).id("zhijia_v1").header([0xF9, 0x08, 0x49]).prefix([0x55, 0x08, 0x80, 0x98]).ble(0x1A, 0xFF).add_translators(TRANS_V1),
     ZhijiaEncoderV2([0x19, 0x01, 0x10]).id("zhijia_v2").header([0x22, 0x9D]).ble(0x1A, 0xFF).add_translators(TRANS_V2),
     ZhijiaEncoderV2([0x19, 0x01, 0x10]).id("zhijia_v2_fl").header([0x22, 0x9D]).ble(0x1A, 0xFF).add_translators(TRANS_V2_FL),
+    ZhijiaEncoderV2([0x19, 0x01, 0x10]).id("zhijia_v2_split").header([0x22, 0x9D]).ble(0x1A, 0xFF).add_translators(TRANS_V2_SPLIT),
     # Zhi Guang standard Android App
     ZhijiaEncoderV0().id("zhiguang_v0").header([0xF9, 0x08, 0x49]).prefix([0x33, 0xAA, 0x55]).ble(0x1A, 0xFF).add_translators(TRANS_V0),
     ZhijiaEncoderV1([0x20, 0x03, 0x05]).id("zhiguang_v1").header([0xF9, 0x08, 0x49]).prefix([0xA0, 0xC0, 0x04, 0x04]).ble(0x1A, 0xFF).add_translators(TRANS_V1),
